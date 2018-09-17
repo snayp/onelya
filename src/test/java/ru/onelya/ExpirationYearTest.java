@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static ru.onelya.Utils.intArrayToString;
 
 /**
  * Created by user6 on 14.09.2018.
@@ -29,19 +30,14 @@ public class ExpirationYearTest {
 
     @Test
     public void expirationYearIsStarts20() {
-        for(int i=0; i<expyear.length; i++)
-        {
-            str = str + Integer.toString(expyear[i]);
-        }
+        str = intArrayToString(expyear);
         assertThat("expiration_year начинается с 20", str, startsWith("20"));
     }
 
+
     @Test
     public void expirationYearGreaterOrEqual2018() {
-        for(int i=2; i<expyear.length; i++)
-        {
-            str = str + Integer.toString(expyear[i]);
-        }
+        str = intArrayToString(expyear);
         assertThat("expiration_year больше либо равен текущему году", Integer.valueOf(str), greaterThanOrEqualTo(18));
     }
 

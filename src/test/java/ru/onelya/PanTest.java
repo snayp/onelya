@@ -2,14 +2,12 @@ package ru.onelya;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.junit.Assert.assertTrue;
+import static ru.onelya.Utils.intArrayToString;
 
 import org.apache.commons.validator.routines.checkdigit.LuhnCheckDigit;
 
@@ -39,7 +37,8 @@ public class PanTest {
 
     @Test
     public void panIsLuhn() {
-        boolean luhnIsTrue = LuhnCheckDigit.LUHN_CHECK_DIGIT.isValid(pan.toString());
+        String str = intArrayToString(pan);
+        boolean luhnIsTrue = LuhnCheckDigit.LUHN_CHECK_DIGIT.isValid(str);
         assertTrue("номер карты не прошел проверку на Luhn алгоритм", luhnIsTrue);
     }
 }
